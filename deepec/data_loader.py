@@ -2,12 +2,14 @@ import re
 import torch
 import numpy as np
 from torch.utils.data import Dataset
-from transformers import AutoTokenizer
+from transformers import AutoTokenizer, AutoConfig
 
 
 class DeepECDataset(Dataset):
     def __init__(self, data_X, data_Y, explainECs, tokenizer_name='Rostlab/prot_bert_bfd', max_length=1000, pred=False):
-        self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, do_lower_case=False)
+        print("Bhavish Edit")
+        #self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, do_lower_case=False)
+        self.tokenizer = AutoTokenizer.from_pretrained("deepec/tokenizer/", do_lower_case=False)
         self.max_length = max_length
         self.data_X = data_X
         self.data_Y = data_Y
